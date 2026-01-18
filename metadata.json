@@ -1,0 +1,7 @@
+{
+  "name": "Myanmar Voice Note AI",
+  "description": "An advanced AI-powered Myanmar voice note assistant with real-time transcription, professional rewriting, and automated reporting.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
