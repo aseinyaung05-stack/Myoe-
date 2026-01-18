@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { AppScreen, User, VoiceNote } from './types';
+import { AppScreen, User } from './types';
 import { getCurrentUser, setCurrentUser } from './services/storageService';
 import Login from './components/Auth/Login';
 import Sidebar from './components/Layout/Sidebar';

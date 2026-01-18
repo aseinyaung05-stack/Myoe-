@@ -2,8 +2,8 @@
 import { GoogleGenAI, Type, Modality, LiveServerMessage } from "@google/genai";
 import { VoiceNote, Report } from "../types";
 
-// Initialize AI with the provided API key
-const getAI = () => new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || "");
+// Initialize AI with the provided API key using the correct class and named parameter
+const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 /**
  * Professional processing of the final audio using Gemini 3 Pro for high-quality rewriting.
@@ -81,8 +81,9 @@ export const connectLiveTranscription = (callbacks: {
     callbacks: {
       onopen: () => console.log("Live session opened"),
       onmessage: async (message: LiveServerMessage) => {
-        if (message.serverContent?.inputAudioTranscription) {
-          const text = message.serverContent.inputAudioTranscription.text;
+        // Fix: Changed inputAudioTranscription to inputTranscription to match Gemini Live API specification
+        if (message.serverContent?.inputTranscription) {
+          const text = message.serverContent.inputTranscription.text;
           fullTranscript += text;
           callbacks.onTranscription(fullTranscript);
         }
