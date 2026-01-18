@@ -3,7 +3,7 @@ import { GoogleGenAI, Type, Modality, LiveServerMessage } from "@google/genai";
 import { VoiceNote, Report } from "../types";
 
 // Initialize AI with the provided API key
-const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+const getAI = () => new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || "");
 
 /**
  * Professional processing of the final audio using Gemini 3 Pro for high-quality rewriting.
